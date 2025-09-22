@@ -23,8 +23,8 @@ export class ProductsController {
 
   // @Get(':id')
   @MessagePattern({ cmd: 'find_one_product' })
-  findOne(@Payload('id', ParseIntPipe) id: number) {
-    return this.productsService.findOne(+id);
+  async findOne(@Payload('id', ParseIntPipe) id: number) {
+    return await this.productsService.findOne(id);
   }
 
   // @Patch(':id')
