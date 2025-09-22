@@ -12,14 +12,10 @@ El objetivo es servir como referencia educativa para comunicación entre servici
 
 ## Índice
 - [Requisitos](#requisitos)  
-- [Instalación y ejecución (desarrollo)](#instalación-y-ejecución-desarrollo)  
-- [Variables de entorno (ejemplos)](#variables-de-entorno-ejemplos)  
-- [Ejecutar con Docker / docker-compose](#ejecutar-con-docker--docker-compose)  
-- [Documentación (Swagger)](#documentación-swagger)  
-- [Testing](#testing)  
-- [Buenas prácticas y recomendaciones](#buenas-prácticas-y-recomendaciones)  
-- [Contribuciones](#contribuciones)  
-- [Licencia](#licencia)
+- [Instalación](#instalación-y-ejecución-desarrollo)  
+- [Variables de entorno (ejemplos)](#variables-de-entorno-ejemplos)
+- [Ejecucción (desarrollo)](#ejecuccion)
+
 
 ---
 
@@ -31,4 +27,34 @@ El objetivo es servir como referencia educativa para comunicación entre servici
 
 ---
 
-## Instalación y ejecución (desarrollo)
+## Instalación (desarrollo)
+
+Products (products-ms)
+- `cd products-ms`
+- `pnpm install`
+
+Client gateway (client-gateway)
+- `cd client-gateway`
+- `pnpm install`
+
+## Varibles de entorno (desarrollo)
+Products (products-ms)
+- `PORT=3000`
+- `DATABASE_URL="URL_DB"`
+
+Client gateway (client-gateway)
+- `PORT=3001` (diferente puerto que los microservicios)
+- `DATABASE_URL="file:./dev.db"` (puedes dejar solo un string, no es necesario dentro de client-gateway)
+- `PRODUCTS_MS_HOST=localhost` (host de UN microservicio, en este caso de PRODUCTS)
+- `PRODUCTS_MS_PORT=3000` (*DEBE SER EL MISMO QUE DE DECLARO EN EL .ENV DE PRODUCTS O DEL MICROSERVICIO*)
+
+## Ejecucción (desarrollo)
+Products (products-ms)
+(terminal 1)
+- `cd products-ms`
+- `pnpm start:dev`
+
+Client gateway (client-gateway)
+(terminal 2)
+- `cd client-gateway`
+- `pnpm start:dev`
